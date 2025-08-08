@@ -1,0 +1,19 @@
+kind: instruction
+name: addi
+long_name: Add immediate
+description: 'Adds an immediate value to the value in xs1, and store the result in
+  xd
+
+  '
+definedBy: I
+assembly: xd, xs1, imm
+encoding:
+  match: '-----------------000-----0010011'
+  variables: null
+access:
+  s: always
+  u: always
+  vs: always
+  vu: always
+data_independent_timing: true
+operation(): X[xd] = X[xs1] + $signed(imm);

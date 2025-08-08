@@ -1,0 +1,56 @@
+# Generated YAML from C header data
+# Total instructions: 3
+
+---
+kind: instruction
+name: add
+long_name: "Integer add"
+description: |
+  Add the value in xs1 to xs2, and store the result in xd.
+  Any overflow is thrown away.
+definedBy: I
+assembly: xd, xs1, xs2
+encoding:
+  match: 0000000----------000-----0110011
+access:
+  s: always
+  u: always
+  vs: always
+  vu: always
+data_independent_timing: true
+operation(): X[xd] = X[xs1] + X[xs2];
+
+---
+kind: instruction
+name: addi
+long_name: "Add immediate"
+description: |
+  Adds an immediate value to the value in xs1, and store the result in xd
+definedBy: I
+assembly: xd, xs1, imm
+encoding:
+  match: -----------------000-----0010011
+access:
+  s: always
+  u: always
+  vs: always
+  vu: always
+data_independent_timing: true
+operation(): X[xd] = X[xs1] + $signed(imm);
+
+---
+kind: instruction
+name: lui
+long_name: "Load upper immediate"
+description: "Load the zero-extended imm into xd."
+definedBy: I
+assembly: xd, imm
+encoding:
+  match: -------------------------0110111
+access:
+  s: always
+  u: always
+  vs: always
+  vu: always
+data_independent_timing: true
+operation(): X[xd] = imm;

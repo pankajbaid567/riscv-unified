@@ -1,0 +1,16 @@
+kind: instruction
+name: lui
+long_name: Load upper immediate
+description: Load the zero-extended imm into xd.
+definedBy: I
+assembly: xd, imm
+encoding:
+  match: '-------------------------0110111'
+  variables: null
+access:
+  s: always
+  u: always
+  vs: always
+  vu: always
+data_independent_timing: true
+operation(): X[xd] = imm;
